@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "TestMusicAppServices", "TestMusicAppServices\TestMusicAppServices.sfproj", "{4353077D-A559-4B06-99CB-80874694B0B9}"
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "TestMusicAppServices", "TestMusicAppServices\TestMusicAppServices.sfproj", "{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioConverter", "AudioConverter\AudioConverter.csproj", "{3C372E06-FBC3-45D6-8611-472388E9AFA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMusicApp.AudioConverter", "TestMusicApp.AudioConverter\TestMusicApp.AudioConverter.csproj", "{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,27 +15,27 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4353077D-A559-4B06-99CB-80874694B0B9}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{4353077D-A559-4B06-99CB-80874694B0B9}.Debug|x64.ActiveCfg = Debug|x64
-		{4353077D-A559-4B06-99CB-80874694B0B9}.Debug|x64.Build.0 = Debug|x64
-		{4353077D-A559-4B06-99CB-80874694B0B9}.Debug|x64.Deploy.0 = Debug|x64
-		{4353077D-A559-4B06-99CB-80874694B0B9}.Release|Any CPU.ActiveCfg = Release|x64
-		{4353077D-A559-4B06-99CB-80874694B0B9}.Release|x64.ActiveCfg = Release|x64
-		{4353077D-A559-4B06-99CB-80874694B0B9}.Release|x64.Build.0 = Release|x64
-		{4353077D-A559-4B06-99CB-80874694B0B9}.Release|x64.Deploy.0 = Release|x64
-		{3C372E06-FBC3-45D6-8611-472388E9AFA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C372E06-FBC3-45D6-8611-472388E9AFA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C372E06-FBC3-45D6-8611-472388E9AFA2}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{3C372E06-FBC3-45D6-8611-472388E9AFA2}.Debug|x64.Build.0 = Debug|Any CPU
-		{3C372E06-FBC3-45D6-8611-472388E9AFA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C372E06-FBC3-45D6-8611-472388E9AFA2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3C372E06-FBC3-45D6-8611-472388E9AFA2}.Release|x64.ActiveCfg = Release|Any CPU
-		{3C372E06-FBC3-45D6-8611-472388E9AFA2}.Release|x64.Build.0 = Release|Any CPU
+		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Debug|x64.ActiveCfg = Debug|x64
+		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Debug|x64.Build.0 = Debug|x64
+		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Debug|x64.Deploy.0 = Debug|x64
+		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Release|Any CPU.ActiveCfg = Release|x64
+		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Release|x64.ActiveCfg = Release|x64
+		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Release|x64.Build.0 = Release|x64
+		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Release|x64.Deploy.0 = Release|x64
+		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Debug|x64.Build.0 = Debug|Any CPU
+		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Release|x64.ActiveCfg = Release|Any CPU
+		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7BBB44D0-C206-40A5-9152-E87AC0927B43}
+		SolutionGuid = {4811E49D-29F0-4A7E-831F-175D2FABD7E4}
 	EndGlobalSection
 EndGlobal

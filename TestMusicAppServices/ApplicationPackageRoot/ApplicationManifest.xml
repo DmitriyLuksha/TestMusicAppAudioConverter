@@ -1,17 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="TestMusicAppServicesType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
-    <Parameter Name="AudioConverter_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
-    <Parameter Name="AudioConverter_InstanceCount" DefaultValue="-1" />
+    <Parameter Name="TestMusicApp.AudioConverter_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
+    <Parameter Name="TestMusicApp.AudioConverter_InstanceCount" DefaultValue="-1" />
+    <Parameter Name="ServiceBusConnectionString" DefaultValue="" />
+    <Parameter Name="AudioConversionQueueName" DefaultValue="" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="AudioConverterPkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
+    <ServiceManifestRef ServiceManifestName="TestMusicApp.AudioConverterPkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides>
+      <ConfigOverride Name="Config">
+        <Settings>
+          <Section Name="ServiceBusSettings">
+            <Parameter Name="ServiceBusConnectionString" Value="[ServiceBusConnectionString]" />
+            <Parameter Name="AudioConversionQueueName" Value="[AudioConversionQueueName]" />
+          </Section>
+        </Settings>
+      </ConfigOverride>
+    </ConfigOverrides>
     <EnvironmentOverrides CodePackageRef="code">
-      <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="[AudioConverter_ASPNETCORE_ENVIRONMENT]" />
+      <EnvironmentVariable Name="ASPNETCORE_ENVIRONMENT" Value="[TestMusicApp.AudioConverter_ASPNETCORE_ENVIRONMENT]" />
     </EnvironmentOverrides>
   </ServiceManifestImport>
   <DefaultServices>
@@ -20,8 +31,8 @@
          ServiceFabric PowerShell module.
          
          The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
-    <Service Name="AudioConverter" ServicePackageActivationMode="ExclusiveProcess">
-      <StatelessService ServiceTypeName="AudioConverterType" InstanceCount="[AudioConverter_InstanceCount]">
+    <Service Name="TestMusicApp.AudioConverter" ServicePackageActivationMode="ExclusiveProcess">
+      <StatelessService ServiceTypeName="TestMusicApp.AudioConverterType" InstanceCount="[TestMusicApp.AudioConverter_InstanceCount]">
         <SingletonPartition />
       </StatelessService>
     </Service>
