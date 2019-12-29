@@ -48,7 +48,7 @@ namespace TestMusicApp.AudioConverter.Listeners
 
         private async Task ProcessMessagesAsync(Message message, CancellationToken cancellationToken)
         {
-
+            await _queueClient.CompleteAsync(message.SystemProperties.LockToken);
         }
 
         private void Stop()
