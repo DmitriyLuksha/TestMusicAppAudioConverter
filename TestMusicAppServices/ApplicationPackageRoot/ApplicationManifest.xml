@@ -4,7 +4,7 @@
     <Parameter Name="TestMusicApp.AudioConverter_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
     <Parameter Name="TestMusicApp.AudioConverter_InstanceCount" DefaultValue="-1" />
     <Parameter Name="ServiceBusConnectionString" DefaultValue="" />
-    <Parameter Name="AudioConversionQueueName" DefaultValue="AudioConversion" />
+    <Parameter Name="AudioConversionQueueName" DefaultValue="" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
