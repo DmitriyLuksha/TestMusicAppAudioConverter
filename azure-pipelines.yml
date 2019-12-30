@@ -21,6 +21,13 @@ steps:
       msbuildArgs: '/p:Deterministic=true /p:PathMap=$(Agent.BuildDirectory)=C:\'
       platform: '$(BuildPlatform)'
       configuration: '$(BuildConfiguration)'
+
+  - task: CopyFiles@2
+    displayName: 'Copy build artifacts'
+    inputs:
+      SourceFolder: '$(agent.builddirectory)'
+      Contents: '**'
+      TargetFolder: '$(build.artifactstagingdirectory)'
     
   - task: CopyFiles@2
     displayName: 'Copy PDB Files to: $(build.artifactstagingdirectory)\pdbs'
@@ -51,10 +58,9 @@ steps:
         **\PublishProfiles\*.xml
         **\ApplicationParameters\*.xml
       TargetFolder: '$(build.artifactstagingdirectory)\projectartifacts'
-    condition: succeededOrFailed()
 
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      PathtoPublish: '$(build.artifactstagingdirectory)'
       ArtifactName: 'drop'
       publishLocation: 'Container'
