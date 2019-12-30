@@ -2,6 +2,18 @@ pool:
   vmImage: 'vs2017-win2016'
 
 steps:
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.4.1'
+    inputs:
+      versionSpec: 4.4.1
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+      command: 'restore'
+      restoreSolution: '**/*.sln'
+      feedsToUse: 'select'
+
   - task: VSBuild@1
     displayName: 'Build solution'
     inputs:
