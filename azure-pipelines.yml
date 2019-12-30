@@ -2,44 +2,8 @@ pool:
   vmImage: 'vs2017-win2016'
 
 steps:
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 4.4.1'
-    inputs:
-      versionSpec: 4.4.1
-
-  - task: NuGetCommand@2
-    displayName: 'NuGet restore'
-    inputs:
-      command: 'restore'
-      restoreSolution: '**/*.sln'
-      feedsToUse: 'select'
-
-  - task: VSBuild@1
-    displayName: 'Build solution'
-    inputs:
-      solution: '**\*.sln'
-      msbuildArgs: '/p:Deterministic=true /p:PathMap=$(Agent.BuildDirectory)=C:\'
-      platform: '$(BuildPlatform)'
-      configuration: '$(BuildConfiguration)'
-
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)\TestMusicApp.AudioConverter'
-    inputs:
-      SourceFolder: '$(Agent.BuildDirectory)\TestMusicApp.AudioConverter'
-      Contents: '**\*'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)\TestMusicApp.AudioConverter'
-
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)\projectartifacts'
-    inputs:
-      SourceFolder: '$(System.DefaultWorkingDirectory)'
-      Contents: |
-        **\PublishProfiles\*.xml
-        **\ApplicationParameters\*.xml
-      TargetFolder: '$(Build.ArtifactStagingDirectory)\projectartifacts'
-
-  - task: PublishBuildArtifacts@1
-    inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-      ArtifactName: 'drop'
-      publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
