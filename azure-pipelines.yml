@@ -23,44 +23,23 @@ steps:
       configuration: '$(BuildConfiguration)'
 
   - task: CopyFiles@2
-    displayName: 'Copy build artifacts'
+    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)\TestMusicApp.AudioConverter'
     inputs:
-      SourceFolder: '$(agent.builddirectory)'
-      Contents: '**'
-      TargetFolder: '$(build.artifactstagingdirectory)'
-    
-  - task: CopyFiles@2
-    displayName: 'Copy PDB Files to: $(build.artifactstagingdirectory)\pdbs'
-    inputs:
-      SourceFolder: '$(build.artifactstagingdirectory)\applicationpackage'
-      Contents: '**\*.pdb'
-      TargetFolder: '$(build.artifactstagingdirectory)\pdbs'
-    
-  - task: DeleteFiles@1
-    displayName: 'Delete PDB files from $(build.artifactstagingdirectory)\applicationpackage'
-    inputs:
-      SourceFolder: '$(build.artifactstagingdirectory)\applicationpackage'
-      Contents: '**\*.pdb'
-
-  - task: ServiceFabricUpdateManifests@2
-    displayName: 'Update Service Fabric Manifests (Manifest versions)'
-    inputs:
-      applicationPackagePath: '$(build.artifactstagingdirectory)\applicationpackage'
-      versionSuffix: '.$(build.buildnumber)'
-      updateOnlyChanged: true
-      pkgArtifactName: drop
+      SourceFolder: '$(Agent.BuildDirectory)\TestMusicApp.AudioConverter'
+      Contents: '**\*'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)\TestMusicApp.AudioConverter'
 
   - task: CopyFiles@2
-    displayName: 'Copy Files to: $(build.artifactstagingdirectory)\projectartifacts'
+    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)\projectartifacts'
     inputs:
-      SourceFolder: '$(system.defaultworkingdirectory)'
+      SourceFolder: '$(System.DefaultWorkingDirectory)'
       Contents: |
         **\PublishProfiles\*.xml
         **\ApplicationParameters\*.xml
-      TargetFolder: '$(build.artifactstagingdirectory)\projectartifacts'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)\projectartifacts'
 
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: '$(build.artifactstagingdirectory)'
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
       ArtifactName: 'drop'
       publishLocation: 'Container'
