@@ -3,8 +3,13 @@
   <Parameters>
     <Parameter Name="TestMusicApp.AudioConverter_ASPNETCORE_ENVIRONMENT" DefaultValue="" />
     <Parameter Name="TestMusicApp.AudioConverter_InstanceCount" DefaultValue="-1" />
-    <Parameter Name="ServiceBusConnectionString" DefaultValue="" />
-    <Parameter Name="AudioConversionQueueName" DefaultValue="" />
+    <Parameter Name="TestMusicApp.ConversionSettings.BitRate" DefaultValue="128" />
+    <Parameter Name="TestMusicApp.ServiceBusSettings.ConnectionString" DefaultValue="" />
+    <Parameter Name="TestMusicApp.ServiceBusSettings.AudioConversionQueueName" DefaultValue="" />
+    <Parameter Name="TestMusicApp.ServiceBusSettings.AudioUploadingResultQueueName" DefaultValue="" />
+    <Parameter Name="TestMusicApp.StorageSettings.ConnectionString" DefaultValue="" />
+    <Parameter Name="TestMusicApp.StorageSettings.AudioFilesContainerName" DefaultValue="" />
+    <Parameter Name="TestMusicApp.StorageSettings.UnprocessedAudioFilesContainerName" DefaultValue="" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
@@ -14,9 +19,18 @@
     <ConfigOverrides>
       <ConfigOverride Name="Config">
         <Settings>
+          <Section Name="ConversionSettings">
+            <Parameter Name="BitRate" Value="[TestMusicApp.ConversionSettings.BitRate]" />
+          </Section>
           <Section Name="ServiceBusSettings">
-            <Parameter Name="ServiceBusConnectionString" Value="[ServiceBusConnectionString]" />
-            <Parameter Name="AudioConversionQueueName" Value="[AudioConversionQueueName]" />
+            <Parameter Name="ConnectionString" Value="[TestMusicApp.ServiceBusSettings.ConnectionString]" />
+            <Parameter Name="AudioConversionQueueName" Value="[TestMusicApp.ServiceBusSettings.AudioConversionQueueName]" />
+            <Parameter Name="AudioUploadingResultQueueName" Value="[TestMusicApp.ServiceBusSettings.AudioUploadingResultQueueName]" />
+          </Section>
+          <Section Name="StorageSettings">
+            <Parameter Name="ConnectionString" Value="[TestMusicApp.StorageSettings.ConnectionString]" />
+            <Parameter Name="AudioFilesContainerName" Value="[TestMusicApp.StorageSettings.AudioFilesContainerName]" />
+            <Parameter Name="UnprocessedAudioFilesContainerName" Value="[TestMusicApp.StorageSettings.UnprocessedAudioFilesContainerName]" />
           </Section>
         </Settings>
       </ConfigOverride>

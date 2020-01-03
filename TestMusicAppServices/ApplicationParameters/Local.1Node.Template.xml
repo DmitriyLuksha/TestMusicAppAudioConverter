@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/TestMusicAppServices" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="TestMusicApp.AudioConverter_ASPNETCORE_ENVIRONMENT" Value="Development" />
+    <Parameter Name="TestMusicApp.AudioConverter_InstanceCount" Value="1" />
+    <Parameter Name="TestMusicApp.ServiceBusSettings.ConnectionString" Value="*your value*" />
+    <Parameter Name="TestMusicApp.ServiceBusSettings.AudioConversionQueueName" Value="*your value*" />
+    <Parameter Name="TestMusicApp.ServiceBusSettings.AudioUploadingResultQueueName" Value="*your value*" />
+    <Parameter Name="TestMusicApp.StorageSettings.ConnectionString" Value="*your value*" />
+    <Parameter Name="TestMusicApp.StorageSettings.AudioFilesContainerName" Value="*your value*" />
+    <Parameter Name="TestMusicApp.StorageSettings.UnprocessedAudioFilesContainerName" Value="*your value*" />
+  </Parameters>
+</Application>

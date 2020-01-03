@@ -8,21 +8,21 @@ namespace TestMusicApp.AudioConverter
 {
     public class AudioConverterStatelessService : StatelessService
     {
-        private readonly IAudioConverterListener _audioConverterListener;
+        private readonly IAudioConversionRequestListener _audioConversionRequestListener;
 
         public AudioConverterStatelessService(
             StatelessServiceContext serviceContext,
-            IAudioConverterListener audioConverterListener
+            IAudioConversionRequestListener audioConversionRequestListener
         ) : base(serviceContext)
         {
-            _audioConverterListener = audioConverterListener;
+            _audioConversionRequestListener = audioConversionRequestListener;
         }
 
         protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
         {
             return new List<ServiceInstanceListener>
             {
-                new ServiceInstanceListener(context => _audioConverterListener)
+                new ServiceInstanceListener(context => _audioConversionRequestListener)
             };
         }
     }

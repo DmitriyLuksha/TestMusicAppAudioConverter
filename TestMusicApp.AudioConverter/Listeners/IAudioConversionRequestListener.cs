@@ -2,7 +2,7 @@
 
 namespace TestMusicApp.AudioConverter.Listeners
 {
-    public interface IAudioConverterListener : ICommunicationListener
+    public interface IAudioConversionRequestListener : ICommunicationListener
     {
     }
 }

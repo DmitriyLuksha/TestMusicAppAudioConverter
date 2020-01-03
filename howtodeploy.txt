@@ -1,14 +1,4 @@
-Create file TestMusicAppServices/ApplicationParameters/Local.xml with content:
-
-<?xml version="1.0" encoding="utf-8"?>
-<Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/TestMusicAppServices" xmlns="http://schemas.microsoft.com/2011/01/fabric">
-  <Parameters>
-    <Parameter Name="TestMusicApp.AudioConverter_ASPNETCORE_ENVIRONMENT" Value="Development" />
-    <Parameter Name="TestMusicApp.AudioConverter_InstanceCount" Value="1" />
-    <Parameter Name="ServiceBusConnectionString" Value="*your value*" />
-    <Parameter Name="AudioConversionQueueName" Value="*your value*" />
-  </Parameters>
-</Application>
+Create files Local.1Node.xml and Local.5Node.xml from Local.1Node.Template.xml and Local.5Node.Template.xml in folder TestMusicAppServices/ApplicationParameters
 
 
-TODO create deploy script
+TODO create deployment script

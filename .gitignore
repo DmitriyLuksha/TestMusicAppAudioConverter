@@ -350,4 +350,5 @@ MigrationBackup/
 .ionide/
 
 
-TestMusicAppServices/ApplicationParameters/Local.xml
+TestMusicAppServices/ApplicationParameters/Local.1Node.xml
+TestMusicAppServices/ApplicationParameters/Local.5Node.xml

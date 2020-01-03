@@ -13,7 +13,10 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Azure.ServiceBus" Version="4.1.1" />
+    <PackageReference Include="Microsoft.Azure.Storage.Blob" Version="11.1.1" />
     <PackageReference Include="Microsoft.ServiceFabric.AspNetCore.Kestrel" Version="4.0.457" />
+    <PackageReference Include="NAudio" Version="1.9.0" />
+    <PackageReference Include="NAudio.Lame" Version="1.1.0" />
   </ItemGroup>
 
 </Project>
