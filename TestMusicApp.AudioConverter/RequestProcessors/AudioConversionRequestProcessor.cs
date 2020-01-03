@@ -53,8 +53,6 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
 
             try
             {
-                throw new Exception("");
-
                 await _audioConversionMessageBroker
                     .SendFileConversionResult(true, newFileName, playlistId, trackName);
             }
