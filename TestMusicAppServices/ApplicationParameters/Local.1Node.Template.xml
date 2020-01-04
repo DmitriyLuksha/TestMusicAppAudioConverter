@@ -3,11 +3,11 @@
   <Parameters>
     <Parameter Name="TestMusicApp.AudioConverter_ASPNETCORE_ENVIRONMENT" Value="Development" />
     <Parameter Name="TestMusicApp.AudioConverter_InstanceCount" Value="1" />
-    <Parameter Name="TestMusicApp.ServiceBusSettings.ConnectionString" Value="*your value*" />
-    <Parameter Name="TestMusicApp.ServiceBusSettings.AudioConversionQueueName" Value="*your value*" />
-    <Parameter Name="TestMusicApp.ServiceBusSettings.AudioUploadingResultQueueName" Value="*your value*" />
-    <Parameter Name="TestMusicApp.StorageSettings.ConnectionString" Value="*your value*" />
-    <Parameter Name="TestMusicApp.StorageSettings.AudioFilesContainerName" Value="*your value*" />
-    <Parameter Name="TestMusicApp.StorageSettings.UnprocessedAudioFilesContainerName" Value="*your value*" />
+    <Parameter Name="TestMusicApp.ServiceBusSettings.ConnectionString" Value="" />
+    <Parameter Name="TestMusicApp.ServiceBusSettings.AudioConversionQueueName" Value="" />
+    <Parameter Name="TestMusicApp.ServiceBusSettings.AudioUploadingResultQueueName" Value="" />
+    <Parameter Name="TestMusicApp.StorageSettings.ConnectionString" Value="" />
+    <Parameter Name="TestMusicApp.StorageSettings.AudioFilesContainerName" Value="" />
+    <Parameter Name="TestMusicApp.StorageSettings.UnprocessedAudioFilesContainerName" Value="" />
   </Parameters>
 </Application>
