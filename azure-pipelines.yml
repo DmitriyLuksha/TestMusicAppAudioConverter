@@ -51,11 +51,11 @@ steps:
 - task: ServiceFabricUpdateManifests@2
   displayName: 'Update Service Fabric Manifests (Manifest versions)'
   inputs:
+    updateType: 'Manifest versions'
     applicationPackagePath: '$(Build.ArtifactStagingDirectory)\applicationpackage'
     versionSuffix: '.$(Build.BuildNumber)'
     versionBehavior: 'Replace'
-    updateOnlyChanged: true
-    pkgArtifactName: drop
+    updateOnlyChanged: false
 
 - task: CopyFiles@2
   displayName: 'Copy Files to $(Build.ArtifactStagingDirectory)\projectartifacts'
