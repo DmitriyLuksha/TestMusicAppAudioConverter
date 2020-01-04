@@ -17,7 +17,7 @@ namespace TestMusicApp.AudioConverter.MessageBrokers
             this._serviceBusConfig = serviceBusConfig;
         }
 
-        private readonly string FileConversionResultIsSuccessPropertyKey = "isSuccess";
+        private readonly string FileConversionResultIsSuccessPropertyKey = "isSuccess1";
         private readonly string FileConversionResultUploadedFileNamePropertyKey = "uploadedFileName";
         private readonly string FileConversionResultPlaylistIdPropertyKey = "playlistId";
         private readonly string FileConversionResultTrackNamePropertyKey = "trackName";
