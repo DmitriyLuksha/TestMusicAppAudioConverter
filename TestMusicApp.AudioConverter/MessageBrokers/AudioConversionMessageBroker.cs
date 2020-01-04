@@ -20,7 +20,7 @@ namespace TestMusicApp.AudioConverter.MessageBrokers
         private readonly string FileConversionResultIsSuccessPropertyKey = "isSuccess";
         private readonly string FileConversionResultUploadedFileNamePropertyKey = "uploadedFileName";
         private readonly string FileConversionResultPlaylistIdPropertyKey = "playlistId";
-        private readonly string FileConversionResultTrackNamePropertyKey = "trackName";
+        private readonly string FileConversionResultTrackNamePropertyKey = "trackName2";
 
         public async Task SendFileConversionResult(
             bool isSuccess,
