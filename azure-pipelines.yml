@@ -12,6 +12,13 @@ steps:
   inputs:
     restoreSolution: '**/*.sln'
 
+- task: CmdLine@2
+  inputs:
+    script: |
+      copy Local.1Node.Template.xml Local.1Node.xml
+      copy Local.5Node.Template.xml Local.5Node.xml
+    workingDirectory: '$(System.DefaultWorkingDirectory)\TestMusicAppServices\ApplicationParameters'
+
 - task: VSBuild@1
   displayName: 'Build solution'
   inputs:
