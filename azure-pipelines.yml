@@ -53,6 +53,7 @@ steps:
   inputs:
     applicationPackagePath: '$(Build.ArtifactStagingDirectory)\applicationpackage'
     versionSuffix: '.$(Build.BuildNumber)'
+    versionBehavior: 'Replace'
     updateOnlyChanged: true
     pkgArtifactName: drop
 
