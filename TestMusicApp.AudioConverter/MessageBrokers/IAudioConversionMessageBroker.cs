@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using TestMusicApp.AudioConverter.Messages;
 
 namespace TestMusicApp.AudioConverter.MessageBrokers
 {
     public interface IAudioConversionMessageBroker
     {
-        Task SendFileConversionResult(bool isSuccess, string uploadedFileName, Guid playlistId, string trackName);
+        Task SendFileConversionResult(AudioConversionResultMessage audioConversionResultMessage);
     }
 }

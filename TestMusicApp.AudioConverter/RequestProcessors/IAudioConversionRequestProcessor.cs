@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using TestMusicApp.AudioConverter.Messages;
 
 namespace TestMusicApp.AudioConverter.RequestProcessors
 {
     public interface IAudioConversionRequestProcessor
     {
-        Task ProcessAsync(string fileName, Guid playlistId, string trackName);
+        Task ProcessAsync(AudioConversionMessage message);
     }
 }

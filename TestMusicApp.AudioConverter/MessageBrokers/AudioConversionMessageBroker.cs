@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.ServiceBus;
 using Newtonsoft.Json;
 using TestMusicApp.AudioConverter.Configs;
+using TestMusicApp.AudioConverter.Messages;
 
 namespace TestMusicApp.AudioConverter.MessageBrokers
 {
@@ -17,30 +18,12 @@ namespace TestMusicApp.AudioConverter.MessageBrokers
             this._serviceBusConfig = serviceBusConfig;
         }
 
-        private readonly string FileConversionResultIsSuccessPropertyKey = "isSuccess";
-        private readonly string FileConversionResultUploadedFileNamePropertyKey = "uploadedFileName";
-        private readonly string FileConversionResultPlaylistIdPropertyKey = "playlistId";
-        private readonly string FileConversionResultTrackNamePropertyKey = "trackName";
-
-        public async Task SendFileConversionResult(
-            bool isSuccess,
-            string uploadedFileName,
-            Guid playlistId,
-            string trackName
-        )
+        public async Task SendFileConversionResult(AudioConversionResultMessage audioConversionResultMessage)
         {
             var connectionString = _serviceBusConfig.ConnectionString;
             var queueName = _serviceBusConfig.AudioUploadingResultQueueName;
-
-            var messageDictionary = new Dictionary<string, string>
-            {
-                { FileConversionResultIsSuccessPropertyKey, isSuccess.ToString() },
-                { FileConversionResultUploadedFileNamePropertyKey, uploadedFileName },
-                { FileConversionResultPlaylistIdPropertyKey, playlistId.ToString() },
-                { FileConversionResultTrackNamePropertyKey, trackName },
-            };
-
-            var messageJson = JsonConvert.SerializeObject(messageDictionary);
+            
+            var messageJson = JsonConvert.SerializeObject(audioConversionResultMessage);
             var queueClient = new QueueClient(connectionString, queueName);
             var message = new Message(Encoding.UTF8.GetBytes(messageJson));
 

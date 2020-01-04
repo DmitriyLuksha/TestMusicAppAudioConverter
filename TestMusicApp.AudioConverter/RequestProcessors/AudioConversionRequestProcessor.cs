@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using TestMusicApp.AudioConverter.MessageBrokers;
+using TestMusicApp.AudioConverter.Messages;
 using TestMusicApp.AudioConverter.Services;
 using TestMusicApp.AudioConverter.Storages;
 
@@ -24,8 +25,10 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
             this._audioConversionMessageBroker = audioConversionMessageBroker;
         }
         
-        public async Task ProcessAsync(string fileName, Guid playlistId, string trackName)
+        public async Task ProcessAsync(AudioConversionMessage message)
         {
+            var fileName = message.FileName;
+
             var unprocessedAudioFileContent = new MemoryStream();
             var result = new MemoryStream();
 
@@ -39,8 +42,15 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
             {
                 // File can't be converted
 
+                var audioConversionResultMessage = new AudioConversionResultMessage
+                {
+                    IsSuccess = false,
+                    FileName = null,
+                    AdditionalData = message.AdditionalData
+                };
+
                 await _audioConversionMessageBroker
-                    .SendFileConversionResult(false, null, playlistId, trackName);
+                    .SendFileConversionResult(audioConversionResultMessage);
 
                 await CleanUpUnprocessedFileAsync(fileName);
 
@@ -53,8 +63,14 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
 
             try
             {
-                await _audioConversionMessageBroker
-                    .SendFileConversionResult(true, newFileName, playlistId, trackName);
+                var audioConversionResultMessage = new AudioConversionResultMessage
+                {
+                    IsSuccess = true,
+                    FileName = newFileName,
+                    AdditionalData = message.AdditionalData
+                };
+
+                await _audioConversionMessageBroker.SendFileConversionResult(audioConversionResultMessage);
             }
             catch
             {

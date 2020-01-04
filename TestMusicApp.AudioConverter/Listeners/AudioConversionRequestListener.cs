@@ -1,11 +1,11 @@
-﻿using Microsoft.Azure.ServiceBus;
-using System;
-using System.Collections.Generic;
+﻿using System;
+using Microsoft.Azure.ServiceBus;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using TestMusicApp.AudioConverter.Configs;
+using TestMusicApp.AudioConverter.Messages;
 using TestMusicApp.AudioConverter.RequestProcessors;
 
 namespace TestMusicApp.AudioConverter.Listeners
@@ -14,13 +14,7 @@ namespace TestMusicApp.AudioConverter.Listeners
     {
         private readonly IServiceBusConfig _serviceBusConfig;
         private readonly IAudioConversionRequestProcessor _audioConversionRequestProcessor;
-
-        private const string FileNameMessagePropertyKey = "fileName";
-        private const string PlaylistIdMessagePropertyKey = "playlistId";
-        private const string TrackNameMessagePropertyKey = "trackName";
-
-        private const string DeadLetterExceptionReason = "Can't process request due to exception";
-
+        
         private IQueueClient _queueClient;
 
         public AudioConversionRequestListener(
@@ -64,30 +58,10 @@ namespace TestMusicApp.AudioConverter.Listeners
 
         private async Task ProcessMessagesAsync(Message message, CancellationToken cancellationToken)
         {
-            try
-            {
-                var messageJson = Encoding.UTF8.GetString(message.Body);
-                var messageDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(messageJson);
-
-                var fileName = messageDictionary[FileNameMessagePropertyKey];
-                var playlistId = Guid.Parse(messageDictionary[PlaylistIdMessagePropertyKey]);
-                var trackName = messageDictionary[TrackNameMessagePropertyKey];
-
-                await _audioConversionRequestProcessor.ProcessAsync(fileName, playlistId, trackName);
-            }
-            catch (Exception ex)
-            {
-                // TODO Logging
-
-                var exceptionJson = JsonConvert.SerializeObject(ex);
-
-                await _queueClient.DeadLetterAsync(
-                    message.SystemProperties.LockToken,
-                    DeadLetterExceptionReason,
-                    exceptionJson);
-
-                return;
-            }
+            var messageJson = Encoding.UTF8.GetString(message.Body);
+            var deserializedMessage = JsonConvert.DeserializeObject<AudioConversionMessage>(messageJson);
+            
+            await _audioConversionRequestProcessor.ProcessAsync(deserializedMessage);
 
             await _queueClient.CompleteAsync(message.SystemProperties.LockToken);
         }
@@ -102,8 +76,8 @@ namespace TestMusicApp.AudioConverter.Listeners
 
         private Task ExceptionReceivedHandler(ExceptionReceivedEventArgs args)
         {
-            // TODO: Proper logging
-            Console.WriteLine(args.Exception);
+            // TODO: Logging
+
             return Task.CompletedTask;
         }
     }
