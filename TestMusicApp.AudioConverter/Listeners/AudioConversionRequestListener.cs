@@ -1,5 +1,6 @@
-﻿using System;
-using Microsoft.Azure.ServiceBus;
+﻿using Microsoft.Azure.ServiceBus;
+using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,6 +16,8 @@ namespace TestMusicApp.AudioConverter.Listeners
         private readonly IServiceBusConfig _serviceBusConfig;
         private readonly IAudioConversionRequestProcessor _audioConversionRequestProcessor;
         
+        private const string DeadLetterExceptionReason = "Can't process request due to exception";
+
         private IQueueClient _queueClient;
 
         public AudioConversionRequestListener(
@@ -58,10 +61,26 @@ namespace TestMusicApp.AudioConverter.Listeners
 
         private async Task ProcessMessagesAsync(Message message, CancellationToken cancellationToken)
         {
-            var messageJson = Encoding.UTF8.GetString(message.Body);
-            var deserializedMessage = JsonConvert.DeserializeObject<AudioConversionMessage>(messageJson);
-            
-            await _audioConversionRequestProcessor.ProcessAsync(deserializedMessage);
+            try
+            {
+                var messageJson = Encoding.UTF8.GetString(message.Body);
+                var deserializedMessage = JsonConvert.DeserializeObject<AudioConversionMessage>(messageJson);
+                
+                await _audioConversionRequestProcessor.ProcessAsync(deserializedMessage);
+            }
+            catch (Exception ex)
+            {
+                // TODO Logging
+
+                var exceptionJson = JsonConvert.SerializeObject(ex);
+
+                await _queueClient.DeadLetterAsync(
+                    message.SystemProperties.LockToken,
+                    DeadLetterExceptionReason,
+                    exceptionJson);
+
+                return;
+            }
 
             await _queueClient.CompleteAsync(message.SystemProperties.LockToken);
         }
