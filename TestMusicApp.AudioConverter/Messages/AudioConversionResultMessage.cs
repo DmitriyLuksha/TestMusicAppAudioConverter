@@ -1,4 +1,6 @@
-﻿namespace TestMusicApp.AudioConverter.Messages
+﻿using System;
+
+namespace TestMusicApp.AudioConverter.Messages
 {
     public class AudioConversionResultMessage
     {
@@ -7,5 +9,7 @@
         public string FileName { get; set; }
 
         public object AdditionalData { get; set; }
+
+        public Exception Exception { get; set; }
     }
 }

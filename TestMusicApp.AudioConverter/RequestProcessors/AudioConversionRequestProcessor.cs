@@ -46,7 +46,8 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
                 {
                     IsSuccess = false,
                     FileName = null,
-                    AdditionalData = message.AdditionalData
+                    AdditionalData = message.AdditionalData,
+                    Exception = ex
                 };
 
                 await _audioConversionMessageBroker
