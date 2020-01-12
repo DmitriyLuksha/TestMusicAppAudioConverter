@@ -4,24 +4,29 @@ using System.Threading.Tasks;
 using TestMusicApp.AudioConverter.Messages;
 using TestMusicApp.AudioConverter.Services;
 using TestMusicApp.AudioConverter.Storages;
+using TestMusicApp.Common.Helpers;
 using TestMusicApp.Common.MessageBrokers;
 using TestMusicApp.Common.Messages;
+using TestMusicApp.Common.Storages;
 
 namespace TestMusicApp.AudioConverter.RequestProcessors
 {
     public class AudioConversionRequestProcessor : IAudioConversionRequestProcessor
     {
         private readonly IAudioConversionService _audioConversionService;
+        private readonly IUnprocessedAudioFilesStorage _unprocessedAudioFilesStorage;
         private readonly IAudioStorage _audioStorage;
         private readonly IAudioUploadingMessageBroker _audioUploadingMessageBroker;
 
         public AudioConversionRequestProcessor(
             IAudioConversionService audioConversionService,
+            IUnprocessedAudioFilesStorage unprocessedAudioFilesStorage,
             IAudioStorage audioStorage,
             IAudioUploadingMessageBroker audioUploadingMessageBroker
         )
         {
             this._audioConversionService = audioConversionService;
+            this._unprocessedAudioFilesStorage = unprocessedAudioFilesStorage;
             this._audioStorage = audioStorage;
             this._audioUploadingMessageBroker = audioUploadingMessageBroker;
         }
@@ -33,7 +38,7 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
             var unprocessedAudioFileContent = new MemoryStream();
             var result = new MemoryStream();
 
-            await _audioStorage.ReadUnprocessedAudioFileAsync(fileName, unprocessedAudioFileContent);
+            await _unprocessedAudioFilesStorage.ReadUnprocessedAudioFileAsync(fileName, unprocessedAudioFileContent);
             
             try
             {
@@ -59,7 +64,7 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
                 return;
             }
 
-            var newFileName = $"{fileName}.mp3";
+            var newFileName = AudioFileNameGenerator.GenerateAudioFileName();
 
             await _audioStorage.UploadAudioFileAsync(newFileName, result);
 
@@ -96,7 +101,7 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
         {
             try
             {
-                await _audioStorage.DeleteUnprocessedAudioFileAsync(fileName);
+                await _unprocessedAudioFilesStorage.DeleteUnprocessedAudioFileAsync(fileName);
             }
             catch
             {

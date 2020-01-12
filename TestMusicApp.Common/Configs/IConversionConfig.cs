@@ -3,5 +3,7 @@
     public interface IConversionConfig
     {
         int BitRate { get; }
+
+        string TempFilesFolder { get; }
     }
 }

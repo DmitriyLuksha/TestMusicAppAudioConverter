@@ -13,5 +13,8 @@ namespace TestMusicApp.Common.Configs
 
         public int BitRate =>
             int.Parse(GetParameterValue("BitRate"));
+
+        public string TempFilesFolder =>
+            GetParameterValue("TempFilesFolder");
     }
 }

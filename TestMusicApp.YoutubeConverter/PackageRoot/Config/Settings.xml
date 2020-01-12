@@ -3,6 +3,7 @@
   <!-- Add your custom configuration sections and parameters here -->
   <Section Name="ConversionSettings">
     <Parameter Name="BitRate" Value="" />
+    <Parameter Name="TempFilesFolder" Value="" />
   </Section>
   <Section Name="ServiceBusSettings">
     <Parameter Name="ConnectionString" Value="" />

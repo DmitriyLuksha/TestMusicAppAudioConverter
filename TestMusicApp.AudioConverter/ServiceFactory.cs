@@ -6,6 +6,7 @@ using TestMusicApp.AudioConverter.Services;
 using TestMusicApp.AudioConverter.Storages;
 using TestMusicApp.Common.Configs;
 using TestMusicApp.Common.MessageBrokers;
+using TestMusicApp.Common.Storages;
 
 namespace TestMusicApp.AudioConverter
 {
@@ -24,8 +25,9 @@ namespace TestMusicApp.AudioConverter
                 .AddSingleton<IStorageConfig, StorageConfig>()
                 .AddSingleton<IAudioConversionService, AudioConversionService>()
                 .AddSingleton<IAudioUploadingMessageBroker, AudioUploadingMessageBroker>()
-                .AddSingleton<IAudioStorage, AudioStorage>()
+                .AddSingleton<IUnprocessedAudioFilesStorage, UnprocessedAudioFilesStorage>()
                 .AddSingleton<IAudioConversionRequestProcessor, AudioConversionRequestProcessor>()
+                .AddSingleton<IAudioStorage, AudioStorage>()
                 .BuildServiceProvider();
         }
 

@@ -1,8 +1,11 @@
 ﻿using System.Fabric;
 using Microsoft.Extensions.DependencyInjection;
 using TestMusicApp.Common.Configs;
+using TestMusicApp.Common.MessageBrokers;
+using TestMusicApp.Common.Storages;
 using TestMusicApp.YoutubeConverter.Listeners;
 using TestMusicApp.YoutubeConverter.RequestProcessors;
+using TestMusicApp.YoutubeConverter.Service;
 
 namespace TestMusicApp.YoutubeConverter
 {
@@ -20,6 +23,9 @@ namespace TestMusicApp.YoutubeConverter
                 .AddSingleton<IConversionConfig, ConversionConfig>()
                 .AddSingleton<IServiceBusConfig, ServiceBusConfig>()
                 .AddSingleton<IStorageConfig, StorageConfig>()
+                .AddSingleton<IYoutubeConversionService, YoutubeConversionService>()
+                .AddSingleton<IAudioStorage, AudioStorage>()
+                .AddSingleton<IAudioUploadingMessageBroker, AudioUploadingMessageBroker>()
                 .BuildServiceProvider();
         }
 

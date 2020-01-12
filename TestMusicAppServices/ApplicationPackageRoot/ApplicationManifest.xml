@@ -4,6 +4,7 @@
     <Parameter Name="TestMusicApp.YoutubeConverter_InstanceCount" DefaultValue="-1" />
     <Parameter Name="TestMusicApp.AudioConverter_InstanceCount" DefaultValue="-1" />
     <Parameter Name="TestMusicApp.ConversionSettings.BitRate" DefaultValue="128" />
+    <Parameter Name="TestMusicApp.ConversionSettings.TempFilesFolder" DefaultValue="D:/testmusicapp/temp" />
     <Parameter Name="TestMusicApp.ServiceBusSettings.ConnectionString" DefaultValue="" />
     <Parameter Name="TestMusicApp.ServiceBusSettings.AudioConversionQueueName" DefaultValue="" />
     <Parameter Name="TestMusicApp.ServiceBusSettings.YoutubeConversionQueueName" DefaultValue="" />
@@ -22,6 +23,7 @@
         <Settings>
           <Section Name="ConversionSettings">
             <Parameter Name="BitRate" Value="[TestMusicApp.ConversionSettings.BitRate]" />
+            <Parameter Name="TempFilesFolder" Value="[TestMusicApp.ConversionSettings.TempFilesFolder]" />
           </Section>
           <Section Name="ServiceBusSettings">
             <Parameter Name="ConnectionString" Value="[TestMusicApp.ServiceBusSettings.ConnectionString]" />
