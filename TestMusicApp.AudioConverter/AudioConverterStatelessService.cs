@@ -15,7 +15,7 @@ namespace TestMusicApp.AudioConverter
             IAudioConversionRequestListener audioConversionRequestListener
         ) : base(serviceContext)
         {
-            _audioConversionRequestListener = audioConversionRequestListener;
+            this._audioConversionRequestListener = audioConversionRequestListener;
         }
 
         protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()

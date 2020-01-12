@@ -1,13 +1,10 @@
 ﻿using System.Fabric;
 using Microsoft.Extensions.DependencyInjection;
-using TestMusicApp.AudioConverter.Listeners;
-using TestMusicApp.AudioConverter.RequestProcessors;
-using TestMusicApp.AudioConverter.Services;
-using TestMusicApp.AudioConverter.Storages;
 using TestMusicApp.Common.Configs;
-using TestMusicApp.Common.MessageBrokers;
+using TestMusicApp.YoutubeConverter.Listeners;
+using TestMusicApp.YoutubeConverter.RequestProcessors;
 
-namespace TestMusicApp.AudioConverter
+namespace TestMusicApp.YoutubeConverter
 {
     public static class ServiceFactory
     {
@@ -17,15 +14,12 @@ namespace TestMusicApp.AudioConverter
         {
             _serviceProvider = new ServiceCollection()
                 .AddSingleton(context)
-                .AddSingleton<AudioConverterStatelessService>()
-                .AddSingleton<IAudioConversionRequestListener, AudioConversionRequestListener>()
+                .AddSingleton<YoutubeConverterStatelessService>()
+                .AddSingleton<IYoutubeConversionRequestListener, YoutubeConversionRequestListener>()
+                .AddSingleton<IYoutubeConversionRequestProcessor, YoutubeConversionRequestProcessor>()
                 .AddSingleton<IConversionConfig, ConversionConfig>()
                 .AddSingleton<IServiceBusConfig, ServiceBusConfig>()
                 .AddSingleton<IStorageConfig, StorageConfig>()
-                .AddSingleton<IAudioConversionService, AudioConversionService>()
-                .AddSingleton<IAudioUploadingMessageBroker, AudioUploadingMessageBroker>()
-                .AddSingleton<IAudioStorage, AudioStorage>()
-                .AddSingleton<IAudioConversionRequestProcessor, AudioConversionRequestProcessor>()
                 .BuildServiceProvider();
         }
 

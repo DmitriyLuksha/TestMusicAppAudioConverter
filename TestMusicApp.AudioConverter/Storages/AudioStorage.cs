@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Blob;
-using TestMusicApp.AudioConverter.Configs;
+using TestMusicApp.Common.Configs;
 
 namespace TestMusicApp.AudioConverter.Storages
 {

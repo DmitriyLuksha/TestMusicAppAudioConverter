@@ -1,4 +1,4 @@
-﻿namespace TestMusicApp.AudioConverter.Configs
+﻿namespace TestMusicApp.Common.Configs
 {
     public interface IConversionConfig
     {

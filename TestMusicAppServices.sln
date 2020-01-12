@@ -5,7 +5,11 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "TestMusicAppServices", "TestMusicAppServices\TestMusicAppServices.sfproj", "{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMusicApp.AudioConverter", "TestMusicApp.AudioConverter\TestMusicApp.AudioConverter.csproj", "{95A36F93-0242-4162-BABE-2A6C86762A7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMusicApp.AudioConverter", "TestMusicApp.AudioConverter\TestMusicApp.AudioConverter.csproj", "{95A36F93-0242-4162-BABE-2A6C86762A7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMusicApp.YoutubeConverter", "TestMusicApp.YoutubeConverter\TestMusicApp.YoutubeConverter.csproj", "{C6F4C551-B155-4474-950D-193C7D021C8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMusicApp.Common", "TestMusicApp.Common\TestMusicApp.Common.csproj", "{35B21613-5A44-4E00-BDE7-40E4D51953B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +35,22 @@ Global
 		{95A36F93-0242-4162-BABE-2A6C86762A7B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{95A36F93-0242-4162-BABE-2A6C86762A7B}.Release|x64.ActiveCfg = Release|Any CPU
 		{95A36F93-0242-4162-BABE-2A6C86762A7B}.Release|x64.Build.0 = Release|Any CPU
+		{C6F4C551-B155-4474-950D-193C7D021C8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6F4C551-B155-4474-950D-193C7D021C8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6F4C551-B155-4474-950D-193C7D021C8A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C6F4C551-B155-4474-950D-193C7D021C8A}.Debug|x64.Build.0 = Debug|Any CPU
+		{C6F4C551-B155-4474-950D-193C7D021C8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6F4C551-B155-4474-950D-193C7D021C8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6F4C551-B155-4474-950D-193C7D021C8A}.Release|x64.ActiveCfg = Release|Any CPU
+		{C6F4C551-B155-4474-950D-193C7D021C8A}.Release|x64.Build.0 = Release|Any CPU
+		{35B21613-5A44-4E00-BDE7-40E4D51953B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35B21613-5A44-4E00-BDE7-40E4D51953B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35B21613-5A44-4E00-BDE7-40E4D51953B5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{35B21613-5A44-4E00-BDE7-40E4D51953B5}.Debug|x64.Build.0 = Debug|Any CPU
+		{35B21613-5A44-4E00-BDE7-40E4D51953B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35B21613-5A44-4E00-BDE7-40E4D51953B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35B21613-5A44-4E00-BDE7-40E4D51953B5}.Release|x64.ActiveCfg = Release|Any CPU
+		{35B21613-5A44-4E00-BDE7-40E4D51953B5}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

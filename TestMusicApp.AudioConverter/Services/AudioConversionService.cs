@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using NAudio.Lame;
 using NAudio.Wave;
-using TestMusicApp.AudioConverter.Configs;
+using TestMusicApp.Common.Configs;
 
 namespace TestMusicApp.AudioConverter.Services
 {

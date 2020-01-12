@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TestMusicApp.AudioConverter\TestMusicApp.AudioConverter.csproj" />
+    <ProjectReference Include="..\TestMusicApp.YoutubeConverter\TestMusicApp.YoutubeConverter.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
   <PropertyGroup>

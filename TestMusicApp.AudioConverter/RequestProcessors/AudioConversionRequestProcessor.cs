@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using TestMusicApp.AudioConverter.MessageBrokers;
 using TestMusicApp.AudioConverter.Messages;
 using TestMusicApp.AudioConverter.Services;
 using TestMusicApp.AudioConverter.Storages;
+using TestMusicApp.Common.MessageBrokers;
+using TestMusicApp.Common.Messages;
 
 namespace TestMusicApp.AudioConverter.RequestProcessors
 {
@@ -12,17 +13,17 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
     {
         private readonly IAudioConversionService _audioConversionService;
         private readonly IAudioStorage _audioStorage;
-        private readonly IAudioConversionMessageBroker _audioConversionMessageBroker;
+        private readonly IAudioUploadingMessageBroker _audioUploadingMessageBroker;
 
         public AudioConversionRequestProcessor(
             IAudioConversionService audioConversionService,
             IAudioStorage audioStorage,
-            IAudioConversionMessageBroker audioConversionMessageBroker
+            IAudioUploadingMessageBroker audioUploadingMessageBroker
         )
         {
             this._audioConversionService = audioConversionService;
             this._audioStorage = audioStorage;
-            this._audioConversionMessageBroker = audioConversionMessageBroker;
+            this._audioUploadingMessageBroker = audioUploadingMessageBroker;
         }
         
         public async Task ProcessAsync(AudioConversionMessage message)
@@ -42,7 +43,7 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
             {
                 // File can't be converted
 
-                var audioConversionResultMessage = new AudioConversionResultMessage
+                var audioUploadingResultMessage = new AudioUploadingResultMessage
                 {
                     IsSuccess = false,
                     FileName = null,
@@ -50,8 +51,8 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
                     Exception = ex
                 };
 
-                await _audioConversionMessageBroker
-                    .SendFileConversionResult(audioConversionResultMessage);
+                await _audioUploadingMessageBroker
+                    .SendFileConversionResult(audioUploadingResultMessage);
 
                 await CleanUpUnprocessedFileAsync(fileName);
 
@@ -64,14 +65,14 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
 
             try
             {
-                var audioConversionResultMessage = new AudioConversionResultMessage
+                var audioUploadingResultMessage = new AudioUploadingResultMessage
                 {
                     IsSuccess = true,
                     FileName = newFileName,
                     AdditionalData = message.AdditionalData
                 };
 
-                await _audioConversionMessageBroker.SendFileConversionResult(audioConversionResultMessage);
+                await _audioUploadingMessageBroker.SendFileConversionResult(audioUploadingResultMessage);
             }
             catch
             {

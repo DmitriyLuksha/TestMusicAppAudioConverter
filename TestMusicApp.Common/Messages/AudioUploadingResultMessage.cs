@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace TestMusicApp.AudioConverter.Messages
+namespace TestMusicApp.Common.Messages
 {
-    public class AudioConversionResultMessage
+    public class AudioUploadingResultMessage
     {
         public bool IsSuccess { get; set; }
 

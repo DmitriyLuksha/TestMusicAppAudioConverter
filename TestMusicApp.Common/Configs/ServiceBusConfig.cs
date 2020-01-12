@@ -1,6 +1,6 @@
 ﻿using System.Fabric;
 
-namespace TestMusicApp.AudioConverter.Configs
+namespace TestMusicApp.Common.Configs
 {
     public class ServiceBusConfig : BaseConfig, IServiceBusConfig
     {
@@ -16,6 +16,9 @@ namespace TestMusicApp.AudioConverter.Configs
 
         public string AudioConversionQueueName =>
             GetParameterValue("AudioConversionQueueName");
+
+        public string YoutubeConversionQueueName =>
+            GetParameterValue("YoutubeConversionQueueName");
 
         public string AudioUploadingResultQueueName =>
             GetParameterValue("AudioUploadingResultQueueName");

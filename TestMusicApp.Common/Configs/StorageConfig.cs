@@ -1,6 +1,6 @@
 ﻿using System.Fabric;
 
-namespace TestMusicApp.AudioConverter.Configs
+namespace TestMusicApp.Common.Configs
 {
     public class StorageConfig : BaseConfig, IStorageConfig
     {
