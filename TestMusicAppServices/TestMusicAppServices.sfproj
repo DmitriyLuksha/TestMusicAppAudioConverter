@@ -34,9 +34,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestMusicApp.AudioConverter\TestMusicApp.AudioConverter.csproj">
-      <ServiceLaunchUrl>http://{MachineName}:{ServicePort}/</ServiceLaunchUrl>
-    </ProjectReference>
+    <ProjectReference Include="..\TestMusicApp.AudioConverter\TestMusicApp.AudioConverter.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
   <PropertyGroup>

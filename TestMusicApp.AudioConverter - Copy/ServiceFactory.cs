@@ -16,6 +16,7 @@ namespace TestMusicApp.AudioConverter
         public static void Init(StatelessServiceContext context)
         {
             _serviceProvider = new ServiceCollection()
+                .AddLogging()
                 .AddSingleton(context)
                 .AddSingleton<AudioConverterStatelessService>()
                 .AddSingleton<IAudioConversionRequestListener, AudioConversionRequestListener>()

@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "TestMusicAppServices", "TestMusicAppServices\TestMusicAppServices.sfproj", "{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMusicApp.AudioConverter", "TestMusicApp.AudioConverter\TestMusicApp.AudioConverter.csproj", "{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMusicApp.AudioConverter", "TestMusicApp.AudioConverter\TestMusicApp.AudioConverter.csproj", "{95A36F93-0242-4162-BABE-2A6C86762A7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +23,14 @@ Global
 		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Release|x64.ActiveCfg = Release|x64
 		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Release|x64.Build.0 = Release|x64
 		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Release|x64.Deploy.0 = Release|x64
-		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Debug|x64.Build.0 = Debug|Any CPU
-		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Release|x64.ActiveCfg = Release|Any CPU
-		{C6B9AB91-AACE-40D5-9903-FD289AE2E68C}.Release|x64.Build.0 = Release|Any CPU
+		{95A36F93-0242-4162-BABE-2A6C86762A7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95A36F93-0242-4162-BABE-2A6C86762A7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95A36F93-0242-4162-BABE-2A6C86762A7B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{95A36F93-0242-4162-BABE-2A6C86762A7B}.Debug|x64.Build.0 = Debug|Any CPU
+		{95A36F93-0242-4162-BABE-2A6C86762A7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95A36F93-0242-4162-BABE-2A6C86762A7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95A36F93-0242-4162-BABE-2A6C86762A7B}.Release|x64.ActiveCfg = Release|Any CPU
+		{95A36F93-0242-4162-BABE-2A6C86762A7B}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
