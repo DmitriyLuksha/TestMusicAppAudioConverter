@@ -7,9 +7,9 @@ Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "TestMusicAppServices", "Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMusicApp.AudioConverter", "TestMusicApp.AudioConverter\TestMusicApp.AudioConverter.csproj", "{95A36F93-0242-4162-BABE-2A6C86762A7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMusicApp.YoutubeConverter", "TestMusicApp.YoutubeConverter\TestMusicApp.YoutubeConverter.csproj", "{C6F4C551-B155-4474-950D-193C7D021C8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMusicApp.YoutubeConverter", "TestMusicApp.YoutubeConverter\TestMusicApp.YoutubeConverter.csproj", "{C6F4C551-B155-4474-950D-193C7D021C8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMusicApp.Common", "TestMusicApp.Common\TestMusicApp.Common.csproj", "{35B21613-5A44-4E00-BDE7-40E4D51953B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMusicApp.Common", "TestMusicApp.Common\TestMusicApp.Common.csproj", "{35B21613-5A44-4E00-BDE7-40E4D51953B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Debug|Any CPU.Build.0 = Debug|x64
+		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Debug|Any CPU.Deploy.0 = Debug|x64
 		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Debug|x64.ActiveCfg = Debug|x64
 		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Debug|x64.Build.0 = Debug|x64
 		{7B14388C-8C9A-4E26-8880-3CD69FE80AC7}.Debug|x64.Deploy.0 = Debug|x64
