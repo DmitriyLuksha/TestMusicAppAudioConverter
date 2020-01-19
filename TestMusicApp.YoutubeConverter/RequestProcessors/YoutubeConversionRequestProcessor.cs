@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using TestMusicApp.Common.Helpers;
 using TestMusicApp.Common.MessageBrokers;
 using TestMusicApp.Common.Messages;
@@ -15,19 +16,22 @@ namespace TestMusicApp.YoutubeConverter.RequestProcessors
         private readonly IYoutubeConversionService _youtubeConversionService;
         private readonly IAudioStorage _audioStorage;
         private readonly IAudioUploadingMessageBroker _audioUploadingMessageBroker;
+        private readonly ILogger _logger;
 
         public YoutubeConversionRequestProcessor(
             IYoutubeConversionService youtubeConversionService,
             IAudioStorage audioStorage,
-            IAudioUploadingMessageBroker audioUploadingMessageBroker
+            IAudioUploadingMessageBroker audioUploadingMessageBroker,
+            ILogger<YoutubeConversionRequestProcessor> logger
         )
         {
             this._youtubeConversionService = youtubeConversionService;
             this._audioStorage = audioStorage;
             this._audioUploadingMessageBroker = audioUploadingMessageBroker;
+            this._logger = logger;
         }
 
-        public async Task ProcessAsync(YoutubeConversionMessage message)
+        public async Task<bool> ProcessAsync(YoutubeConversionMessage message)
         {
             var stream = new MemoryStream();
 
@@ -50,7 +54,7 @@ namespace TestMusicApp.YoutubeConverter.RequestProcessors
                 await _audioUploadingMessageBroker
                     .SendFileConversionResult(audioUploadingResultMessage);
                 
-                return;
+                return false;
             }
 
             var fileName = AudioFileNameGenerator.GenerateAudioFileName();
@@ -68,20 +72,25 @@ namespace TestMusicApp.YoutubeConverter.RequestProcessors
 
                 await _audioUploadingMessageBroker.SendFileConversionResult(audioUploadingResultMessage);
             }
-            catch
+            catch (Exception sendFileResultException)
             {
+                _logger.LogError(sendFileResultException, "Send file conversion result");
+
                 try
                 {
                     await _audioStorage.DeleteAudioFileAsync(fileName);
                 }
-                catch
+                catch (Exception deleteAudioFileException)
                 {
-                    // TODO: Log that file wasn't cleaned up
+                    _logger.LogError(deleteAudioFileException, "Clean up converted audio file");
+
                     throw;
                 }
 
                 throw;
             }
+
+            return true;
         }
     }
 }

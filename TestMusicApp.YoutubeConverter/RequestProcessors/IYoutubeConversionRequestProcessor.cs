@@ -5,6 +5,6 @@ namespace TestMusicApp.YoutubeConverter.RequestProcessors
 {
     public interface IYoutubeConversionRequestProcessor
     {
-        Task ProcessAsync(YoutubeConversionMessage message);
+        Task<bool> ProcessAsync(YoutubeConversionMessage message);
     }
 }

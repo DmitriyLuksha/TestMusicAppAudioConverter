@@ -6,6 +6,6 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
 {
     public interface IAudioConversionRequestProcessor
     {
-        Task ProcessAsync(AudioConversionMessage message);
+        Task<bool> ProcessAsync(AudioConversionMessage message);
     }
 }

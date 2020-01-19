@@ -12,6 +12,8 @@
     <Parameter Name="TestMusicApp.StorageSettings.ConnectionString" DefaultValue="" />
     <Parameter Name="TestMusicApp.StorageSettings.AudioFilesContainerName" DefaultValue="" />
     <Parameter Name="TestMusicApp.StorageSettings.UnprocessedAudioFilesContainerName" DefaultValue="" />
+    <Parameter Name="TestMusicApp.AudioConverter.InstrumentationKey" DefaultValue="" />
+    <Parameter Name="TestMusicApp.YoutubeConverter.InstrumentationKey" DefaultValue="" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
@@ -36,6 +38,12 @@
             <Parameter Name="AudioFilesContainerName" Value="[TestMusicApp.StorageSettings.AudioFilesContainerName]" />
             <Parameter Name="UnprocessedAudioFilesContainerName" Value="[TestMusicApp.StorageSettings.UnprocessedAudioFilesContainerName]" />
           </Section>
+          <Section Name="AudioConverter">
+            <Parameter Name="InstrumentationKey" Value="[TestMusicApp.AudioConverter.InstrumentationKey]" />
+          </Section>
+          <Section Name="YoutubeConverter">
+            <Parameter Name="InstrumentationKey" Value="[TestMusicApp.YoutubeConverter.InstrumentationKey]" />
+          </Section>
         </Settings>
       </ConfigOverride>
     </ConfigOverrides>
@@ -58,6 +66,12 @@
             <Parameter Name="ConnectionString" Value="[TestMusicApp.StorageSettings.ConnectionString]" />
             <Parameter Name="AudioFilesContainerName" Value="[TestMusicApp.StorageSettings.AudioFilesContainerName]" />
             <Parameter Name="UnprocessedAudioFilesContainerName" Value="[TestMusicApp.StorageSettings.UnprocessedAudioFilesContainerName]" />
+          </Section>
+          <Section Name="AudioConverter">
+            <Parameter Name="InstrumentationKey" Value="[TestMusicApp.AudioConverter.InstrumentationKey]" />
+          </Section>
+          <Section Name="YoutubeConverter">
+            <Parameter Name="InstrumentationKey" Value="[TestMusicApp.YoutubeConverter.InstrumentationKey]" />
           </Section>
         </Settings>
       </ConfigOverride>

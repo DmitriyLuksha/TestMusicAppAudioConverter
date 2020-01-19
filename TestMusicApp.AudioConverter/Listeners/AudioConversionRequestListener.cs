@@ -1,9 +1,7 @@
-﻿using Microsoft.Azure.ServiceBus;
-using Newtonsoft.Json;
-using System;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.Extensions.Logging;
 using TestMusicApp.AudioConverter.Messages;
 using TestMusicApp.AudioConverter.RequestProcessors;
 using TestMusicApp.Common.Configs;
@@ -19,15 +17,23 @@ namespace TestMusicApp.AudioConverter.Listeners
 
         public AudioConversionRequestListener(
             IServiceBusConfig serviceBusConfig,
-            IAudioConversionRequestProcessor audioConversionRequestProcessor
-        ) : base(serviceBusConfig, serviceBusConfig.AudioConversionQueueName)
+            IAudioConversionRequestProcessor audioConversionRequestProcessor,
+            ITelemetryChannel telemetryChannel,
+            TelemetryClient telemetryClient,
+            ILogger<AudioConversionRequestListener> logger
+        ) : base(serviceBusConfig,
+                telemetryChannel,
+                telemetryClient,
+                logger,
+                serviceBusConfig.AudioConversionQueueName,
+                "Audio Converter")
         {
             this._audioConversionRequestProcessor = audioConversionRequestProcessor;
         }
 
-        protected override async Task ProcessServiceBusMessage(AudioConversionMessage message)
+        protected override Task<bool> ProcessServiceBusMessage(AudioConversionMessage message)
         {
-            await _audioConversionRequestProcessor.ProcessAsync(message);
+            return _audioConversionRequestProcessor.ProcessAsync(message);
         }
     }
 }

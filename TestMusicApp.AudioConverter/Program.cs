@@ -6,7 +6,9 @@ using System.Fabric;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using TestMusicApp.AudioConverter.Services;
+using TestMusicApp.Common.DependencyInjection;
 
 namespace TestMusicApp.AudioConverter
 {
@@ -37,8 +39,27 @@ namespace TestMusicApp.AudioConverter
 
         private static AudioConverterStatelessService CreateService(StatelessServiceContext context)
         {
-            ServiceFactory.Init(context);
+            ConfigureServices(context);
             return ServiceFactory.GetInstance<AudioConverterStatelessService>();
+        }
+
+        private static void ConfigureServices(StatelessServiceContext context)
+        {
+            // We can't get it using configs because DI isn't set up yet
+            var instrumentationKey = context
+                .CodePackageActivationContext
+                .GetConfigurationPackageObject("Config")
+                .Settings
+                .Sections["AudioConverter"]
+                .Parameters["InstrumentationKey"]
+                .Value;
+
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddCommonServices(context);
+            serviceCollection.AddApplicationInsightsTelemetry(instrumentationKey);
+            serviceCollection.AddAudioConverterServices();
+
+            ServiceFactory.SetupServiceProvider(serviceCollection);
         }
     }
 }

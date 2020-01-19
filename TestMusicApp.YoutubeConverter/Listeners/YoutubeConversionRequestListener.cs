@@ -1,4 +1,7 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.Extensions.Logging;
 using TestMusicApp.Common.Configs;
 using TestMusicApp.Common.Listeners;
 using TestMusicApp.YoutubeConverter.Messages;
@@ -14,15 +17,23 @@ namespace TestMusicApp.YoutubeConverter.Listeners
 
         public YoutubeConversionRequestListener(
             IServiceBusConfig serviceBusConfig,
-            IYoutubeConversionRequestProcessor youtubeConversionRequestProcessor
-        ) : base(serviceBusConfig, serviceBusConfig.YoutubeConversionQueueName)
+            IYoutubeConversionRequestProcessor youtubeConversionRequestProcessor,
+            ITelemetryChannel telemetryChannel,
+            TelemetryClient telemetryClient,
+            ILogger<YoutubeConversionRequestListener> logger
+        ) : base(serviceBusConfig,
+            telemetryChannel,
+            telemetryClient,
+            logger,
+            serviceBusConfig.YoutubeConversionQueueName,
+            "YouTube converter")
         {
             this._youtubeConversionRequestProcessor = youtubeConversionRequestProcessor;
         }
 
-        protected override async Task ProcessServiceBusMessage(YoutubeConversionMessage message)
+        protected override Task<bool> ProcessServiceBusMessage(YoutubeConversionMessage message)
         {
-            await _youtubeConversionRequestProcessor.ProcessAsync(message);
+            return _youtubeConversionRequestProcessor.ProcessAsync(message);
         }
     }
 }

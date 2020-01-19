@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using TestMusicApp.AudioConverter.Messages;
 using TestMusicApp.AudioConverter.Services;
 using TestMusicApp.AudioConverter.Storages;
@@ -17,21 +18,24 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
         private readonly IUnprocessedAudioFilesStorage _unprocessedAudioFilesStorage;
         private readonly IAudioStorage _audioStorage;
         private readonly IAudioUploadingMessageBroker _audioUploadingMessageBroker;
+        private readonly ILogger _logger;
 
         public AudioConversionRequestProcessor(
             IAudioConversionService audioConversionService,
             IUnprocessedAudioFilesStorage unprocessedAudioFilesStorage,
             IAudioStorage audioStorage,
-            IAudioUploadingMessageBroker audioUploadingMessageBroker
+            IAudioUploadingMessageBroker audioUploadingMessageBroker,
+            ILogger<AudioConversionRequestProcessor> logger
         )
         {
             this._audioConversionService = audioConversionService;
             this._unprocessedAudioFilesStorage = unprocessedAudioFilesStorage;
             this._audioStorage = audioStorage;
             this._audioUploadingMessageBroker = audioUploadingMessageBroker;
+            this._logger = logger;
         }
         
-        public async Task ProcessAsync(AudioConversionMessage message)
+        public async Task<bool> ProcessAsync(AudioConversionMessage message)
         {
             var fileName = message.FileName;
 
@@ -61,7 +65,7 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
 
                 await CleanUpUnprocessedFileAsync(fileName);
 
-                return;
+                return false;
             }
 
             var newFileName = AudioFileNameGenerator.GenerateAudioFileName();
@@ -79,15 +83,18 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
 
                 await _audioUploadingMessageBroker.SendFileConversionResult(audioUploadingResultMessage);
             }
-            catch
+            catch (Exception sendFileResultException)
             {
+                _logger.LogError(sendFileResultException, "Send file conversion result");
+
                 try
                 {
                     await _audioStorage.DeleteAudioFileAsync(newFileName);
                 }
-                catch
+                catch (Exception deleteAudioFileException)
                 {
-                    // TODO: Log that file wasn't cleaned up
+                    _logger.LogError(deleteAudioFileException, "Clean up converted audio file");
+
                     throw;
                 }
 
@@ -95,6 +102,8 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
             }
 
             await CleanUpUnprocessedFileAsync(fileName);
+
+            return true;
         }
 
         private async Task CleanUpUnprocessedFileAsync(string fileName)
@@ -103,9 +112,9 @@ namespace TestMusicApp.AudioConverter.RequestProcessors
             {
                 await _unprocessedAudioFilesStorage.DeleteUnprocessedAudioFileAsync(fileName);
             }
-            catch
+            catch (Exception ex)
             {
-                // TODO Log that file wasn't cleaned up
+                _logger.LogError(ex, "Clean up unconverted file after conversion is done");
 
                 // Don't bubble exception because file was processed
                 // we just can't clean up old file

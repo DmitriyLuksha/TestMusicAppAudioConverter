@@ -10,5 +10,7 @@
     <Parameter Name="TestMusicApp.StorageSettings.ConnectionString" Value="" />
     <Parameter Name="TestMusicApp.StorageSettings.AudioFilesContainerName" Value="" />
     <Parameter Name="TestMusicApp.StorageSettings.UnprocessedAudioFilesContainerName" Value="" />
+    <Parameter Name="TestMusicApp.AudioConverter.InstrumentationKey" Value="" />
+    <Parameter Name="TestMusicApp.YoutubeConverter.InstrumentationKey" Value="" />
   </Parameters>
 </Application>

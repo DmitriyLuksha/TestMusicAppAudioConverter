@@ -16,4 +16,10 @@
     <Parameter Name="AudioFilesContainerName" Value="" />
     <Parameter Name="UnprocessedAudioFilesContainerName" Value="" />
   </Section>
+  <Section Name="AudioConverter">
+    <Parameter Name="InstrumentationKey" Value="" />
+  </Section>
+  <Section Name="YoutubeConverter">
+    <Parameter Name="InstrumentationKey" Value="" />
+  </Section>
 </Settings>
