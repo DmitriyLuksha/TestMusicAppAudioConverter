@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/TestMusicAppServices" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
-    <Parameter Name="TestMusicApp.AudioConverter_InstanceCount" Value="1" />
-    <Parameter Name="TestMusicApp.YoutubeConverter_InstanceCount" Value="1" />
-    <Parameter Name="TestMusicApp.ServiceBusSettings.ConnectionString" Value="" />
-    <Parameter Name="TestMusicApp.ServiceBusSettings.AudioConversionQueueName" Value="" />
-    <Parameter Name="TestMusicApp.ServiceBusSettings.YoutubeConversionQueueName" Value="" />
-    <Parameter Name="TestMusicApp.ServiceBusSettings.AudioUploadingResultQueueName" Value="" />
-    <Parameter Name="TestMusicApp.StorageSettings.ConnectionString" Value="" />
-    <Parameter Name="TestMusicApp.StorageSettings.AudioFilesContainerName" Value="" />
-    <Parameter Name="TestMusicApp.StorageSettings.UnprocessedAudioFilesContainerName" Value="" />
-    <Parameter Name="TestMusicApp.AudioConverter.InstrumentationKey" Value="" />
-    <Parameter Name="TestMusicApp.YoutubeConverter.InstrumentationKey" Value="" />
+    <Parameter Name="TestMusicApp.AudioConverter_InstanceCount" Value="-1" />
+    <Parameter Name="TestMusicApp.YoutubeConverter_InstanceCount" Value="-1" />
+    <Parameter Name="TestMusicApp.ServiceBusSettings.ConnectionString" Value="*TestMusicApp.ServiceBusSettings.ConnectionString*" />
+    <Parameter Name="TestMusicApp.ServiceBusSettings.AudioConversionQueueName" Value="*TestMusicApp.ServiceBusSettings.AudioConversionQueueName*" />
+    <Parameter Name="TestMusicApp.ServiceBusSettings.YoutubeConversionQueueName" Value="*TestMusicApp.ServiceBusSettings.YoutubeConversionQueueName*" />
+    <Parameter Name="TestMusicApp.ServiceBusSettings.AudioUploadingResultQueueName" Value="*TestMusicApp.ServiceBusSettings.AudioUploadingResultQueueName*" />
+    <Parameter Name="TestMusicApp.StorageSettings.ConnectionString" Value="*TestMusicApp.StorageSettings.ConnectionString*" />
+    <Parameter Name="TestMusicApp.StorageSettings.AudioFilesContainerName" Value="*TestMusicApp.StorageSettings.AudioFilesContainerName*" />
+    <Parameter Name="TestMusicApp.StorageSettings.UnprocessedAudioFilesContainerName" Value="*TestMusicApp.StorageSettings.UnprocessedAudioFilesContainerName*" />
+    <Parameter Name="TestMusicApp.AudioConverter.InstrumentationKey" Value="*TestMusicApp.AudioConverter.InstrumentationKey*" />
+    <Parameter Name="TestMusicApp.YoutubeConverter.InstrumentationKey" Value="*TestMusicApp.YoutubeConverter.InstrumentationKey*" />
   </Parameters>
 </Application>

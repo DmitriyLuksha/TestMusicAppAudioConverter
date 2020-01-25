@@ -1,0 +1,2 @@
+!) Run script Scripts/Set-ConfigValues
+2) Publish services to local cluster or start debugging
