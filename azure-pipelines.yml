@@ -43,7 +43,7 @@ steps:
     TargetFolder: '$(Build.ArtifactStagingDirectory)\pdbs'
 
 - task: DeleteFiles@1
-  displayName: 'Delete PDF files from $(Build.ArtifactStagingDirectory)\applicationpackage'
+  displayName: 'Delete PDB files from $(Build.ArtifactStagingDirectory)\applicationpackage'
   inputs:
     SourceFolder: '$(Build.ArtifactStagingDirectory)\applicationpackage'
     Contents: '**\*.pdb'
