@@ -36,7 +36,7 @@ steps:
     configuration: '$(BuildConfiguration)'
 
 - task: CopyFiles@2
-  displayName: 'Copy PDF files to $(Build.ArtifactStagingDirectory)\pdbs'
+  displayName: 'Copy PDB files to $(Build.ArtifactStagingDirectory)\pdbs'
   inputs:
     SourceFolder: '$(Build.ArtifactStagingDirectory)\applicationpackage'
     Contents: '**\*.pdb'
