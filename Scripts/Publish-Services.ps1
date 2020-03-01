@@ -26,10 +26,10 @@ Write-Host "Decided to use publish profile for $NodesCount node(s)";
 $PublishProfileFile = [System.IO.Path]::GetFullPath("$PSScriptRoot\..\TestMusicAppServices\PublishProfiles\Local.${NodesCount}Node.xml");
 
 Write-Host "Building solution";
-#dotnet build $SolutionPath;
+dotnet build $SolutionPath;
 
 Write-Host "Packaging services";
-#& $MSBuild $ServicesProjectPath /t:Package /v:Minimal
+& $MSBuild $ServicesProjectPath /t:Package /v:Minimal
 
 Write-Host "Running deploy script";
 
